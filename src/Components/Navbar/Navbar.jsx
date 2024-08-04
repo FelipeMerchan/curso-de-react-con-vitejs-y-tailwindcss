@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Navbar() {
-  const activeStyle = 'underline underline-offset-4'
+  const { count } = useShoppingCart();
+  const activeStyle = 'underline underline-offset-4';
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0  w-full py-5 px-8 text-sm font-light">
@@ -89,7 +91,7 @@ export function Navbar() {
           </NavLink>
         </li>
         <li>
-          0 items
+          🛒 {count}
         </li>
       </ul>
     </nav>
