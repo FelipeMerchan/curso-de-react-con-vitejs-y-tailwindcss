@@ -1,5 +1,6 @@
 import { Card } from "../../Components/Card";
 import { Layout } from "../../Components/Layout";
+import { ProductDetail } from "../../Components/ProductDetail";
 import { useProducts } from "../../hooks/useProducts";
 
 export function Home() {
@@ -16,6 +17,7 @@ export function Home() {
       </div>
       {loading ? <p>Cargando...</p>: null}
       {error ? <p>Hubo un error, intenta de nuevo</p> : null}
+      <ProductDetail />
     </Layout>
   )
 }
