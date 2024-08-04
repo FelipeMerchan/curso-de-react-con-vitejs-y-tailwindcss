@@ -1,5 +1,7 @@
+import { Layout } from "../../Components/Layout";
+
 export function MyAccount() {
   return (
-    <div>MyAccount</div>
+    <Layout>MyAccount</Layout>
   )
 }
