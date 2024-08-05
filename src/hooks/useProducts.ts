@@ -18,6 +18,7 @@ export const useProducts = () => {
       .then((data) => {
         const mappedProducts = data.map((product) => ({
           category: product.category.name ?? '',
+          description: product.description ?? '',
           id: product.id ?? '',
           image: product.images[0] ?? '',
           price: product.price ?? 0,
