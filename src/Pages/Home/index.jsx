@@ -4,7 +4,7 @@ import { ProductDetail } from "../../Components/ProductDetail";
 import { useProducts } from "../../hooks/useProducts";
 
 export function Home() {
-  const { items, loading, error } = useProducts()
+  const { items, loading, error } = useProducts();
 
   return (
     <Layout>
