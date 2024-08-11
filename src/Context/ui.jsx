@@ -6,15 +6,23 @@ export const UiContext = createContext()
 export const UiProvider = ({ children }) => {
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
-  const openProductDetail = () => setIsProductDetailOpen(true)
-  const closeProductDetail = () => setIsProductDetailOpen(false)
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
   return (
     <UiContext.Provider value={{
+      isCheckoutSideMenuOpen,
       isProductDetailOpen,
 
       /* Methods */
+      closeCheckoutSideMenu,
       closeProductDetail,
+      openCheckoutSideMenu,
       openProductDetail,
     }}>
       {children}

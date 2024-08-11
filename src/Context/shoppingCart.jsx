@@ -10,11 +10,6 @@ export const ShoppingCartProvider = ({ children }) => {
   /* Shopping Cart - Add products to cart */
   const [cartProducts, setCartProducts] = useState([]);
 
-  const addProductsToCart = (productData) => {
-    setCartProducts([...cartProducts, productData]);
-    setCount(count + 1);
-  }
-
   return (
     <ShoppingCartContext.Provider value={{
       cartProducts,
@@ -22,7 +17,7 @@ export const ShoppingCartProvider = ({ children }) => {
       productToShow,
 
       /* Methods */
-      addProductsToCart,
+      setCartProducts,
       setCount,
       setProductToShow,
     }}>
