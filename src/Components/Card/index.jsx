@@ -5,7 +5,7 @@ import { useUi } from '../../hooks/useUi';
 
 /* eslint-disable react/prop-types */
 export const Card = ({ data }) => {
-  const { count, setCount, setProductToShow } = useShoppingCart();
+  const { setProductToShow, addProductsToCart } = useShoppingCart();
   const { openProductDetail } = useUi();
 
   const showProduct = (productDetail) => {
@@ -29,7 +29,7 @@ export const Card = ({ data }) => {
         />
         <button
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-          onClick={() => setCount(count + 1)}
+          onClick={() => addProductsToCart(data)}
         >
           <PlusIcon className='h-6 w-6 text-black' />
         </button>
