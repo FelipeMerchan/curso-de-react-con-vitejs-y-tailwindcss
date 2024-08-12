@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 export const OrderCard = props => {
   const { id, title, imageUrl, price, handleDelete } = props;
@@ -17,9 +17,9 @@ export const OrderCard = props => {
         <p className='text-sm font-light'>{title}</p>
       </div>
       <div className='flex items-center gap-2'>
-        <p className='text-lg font-medium'>{price}</p>
+        <p className='text-lg font-medium'>${price}</p>
         <button onClick={() => handleDelete(id)}>
-          <XMarkIcon className='h-6 w-6 text-black cursor-pointer' />
+          <TrashIcon className='h-6 w-6 text-black cursor-pointer' />
         </button>
       </div>
     </div>

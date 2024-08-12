@@ -4,6 +4,7 @@ import './styles.css';
 import { useUi } from '../../hooks/useUi';
 import { useShoppingCart } from '../../hooks/useShoppingCart';
 import { OrderCard } from '../OrderCard';
+import { totalPrice } from '../../utils';
 
 export const CheckoutSideMenu = () => {
   /* Aquí no desestructuramos el contexto, como en el resto
@@ -14,7 +15,7 @@ export const CheckoutSideMenu = () => {
   const handleDelete = (id) => {
     const filteredProducts = shoppingCartContext.cartProducts.filter((cartProduct) => cartProduct.id !== id);
     shoppingCartContext.setCartProducts(filteredProducts);
-  }
+  };
 
   return (
     <aside
@@ -39,6 +40,12 @@ export const CheckoutSideMenu = () => {
             />
           ))
         }
+      </div>
+      <div className='px-6'>
+        <p className='flex justify-between items-center'>
+          <span className='font-light'>Total:</span>
+          <span className='font-medium text-2xl'>${totalPrice(shoppingCartContext.cartProducts)}</span>
+        </p>
       </div>
     </aside>
   )
