@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 import { Layout } from "../../Components/Layout";
@@ -7,6 +7,12 @@ import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function MyOrder() {
   const shoppingCartContext = useShoppingCart();
+  const params = useParams();
+  let order = shoppingCartContext.order[shoppingCartContext.order.length - 1];
+
+  if (params?.id) {
+    order = shoppingCartContext.order?.find((order) => order.id === params.id);
+  }
 
   return (
     <Layout>
@@ -18,7 +24,7 @@ export function MyOrder() {
       </div>
       <div className='flex flex-col w-80'>
         {
-          shoppingCartContext.order?.slice(-1)[0].products.map((product) => (
+          order.products.map((product) => (
             <OrderCard
               key={product.id}
               id={product.id}

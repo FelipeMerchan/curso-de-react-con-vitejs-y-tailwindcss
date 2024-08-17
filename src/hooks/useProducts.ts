@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getProducts } from "../services/products";
 
 export const useProducts = () => {
   const [items, setItems] = useState([]);
@@ -7,24 +8,9 @@ export const useProducts = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://api.escuelajs.co/api/v1/products')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}`)
-        }
-
-        return response.json();
-      })
+    getProducts()
       .then((data) => {
-        const mappedProducts = data.map((product) => ({
-          category: product.category.name ?? '',
-          description: product.description ?? '',
-          id: product.id ?? '',
-          image: product.images[0] ?? '',
-          price: product.price ?? 0,
-          title: product.title ?? '',
-        }))
-        setItems(mappedProducts)
+        setItems(data)
       })
       .catch((error) => setError(error.message))
       .finally(() => setLoading(true))

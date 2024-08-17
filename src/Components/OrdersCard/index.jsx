@@ -1,7 +1,4 @@
 /* eslint-disable react/prop-types */
-import { TrashIcon } from '@heroicons/react/24/outline';
-
-
 export const OrdersCard = props => {
   const { totalPrice, totalProducts } = props;
 

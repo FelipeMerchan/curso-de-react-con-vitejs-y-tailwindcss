@@ -21,6 +21,7 @@ export const CheckoutSideMenu = () => {
   const handleCheckout = () => {
     const orderToAdd = {
       date: '01.02.23',
+      id: crypto.randomUUID(),
       products: shoppingCartContext.cartProducts,
       totalPrice: totalPrice(shoppingCartContext.cartProducts),
       totalProducts: shoppingCartContext.cartProducts.length,
