@@ -25,7 +25,6 @@ export const OrderCard = props => {
         </figure>
         <p className='text-sm font-light'>{title}</p>
       </div>
-      {renderXMarkIcon}
       <div className='flex items-center gap-2'>
         <p className='text-lg font-medium'>${price}</p>
         {renderXMarkIcon}
