@@ -10,7 +10,7 @@ export function MyOrders() {
   return (
     <Layout>
       <div className='flex w-80 items-center justify-center relative mb-6'>
-        <h1>My Orders</h1>
+        <h1 className="font-medium text-xl">My Orders</h1>
       </div>
       {
         shoppingCartContext.order.map((order) => (
