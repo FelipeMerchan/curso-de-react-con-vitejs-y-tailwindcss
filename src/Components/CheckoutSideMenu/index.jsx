@@ -17,6 +17,18 @@ export const CheckoutSideMenu = () => {
     shoppingCartContext.setCartProducts(filteredProducts);
   };
 
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: '01.02.23',
+      products: shoppingCartContext.cartProducts,
+      totalProducts: shoppingCartContext.cartProducts.length,
+      totalPrice: totalPrice(shoppingCartContext.cartProducts)
+    };
+
+    shoppingCartContext.setOrder([...shoppingCartContext.order, orderToAdd]);
+    shoppingCartContext.setCartProducts([]);
+  };
+
   return (
     <aside
       className={`${uIContext.isCheckoutSideMenuOpen ? 'flex': 'hidden'} checkout-side-menu flex-col fixed right-0 border border-black rounded-lg bg-white`}
@@ -27,7 +39,7 @@ export const CheckoutSideMenu = () => {
           <XMarkIcon className='h-6 w-6 text-black' />
         </button>
       </div>
-      <div className='px-6 overflow-y-scroll'>
+      <div className='px-6 overflow-y-scroll flex-1'>
         {
           shoppingCartContext.cartProducts.map((product) => (
             <OrderCard
@@ -41,11 +53,12 @@ export const CheckoutSideMenu = () => {
           ))
         }
       </div>
-      <div className='px-6'>
+      <div className='px-6 mb-4'>
         <p className='flex justify-between items-center'>
           <span className='font-light'>Total:</span>
           <span className='font-medium text-2xl'>${totalPrice(shoppingCartContext.cartProducts)}</span>
         </p>
+        <button className='w-full bg-black py-3 text-white my-2 rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
       </div>
     </aside>
   )
