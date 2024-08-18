@@ -3,22 +3,26 @@ import { getProducts } from "../services/products";
 
 export const useProducts = () => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
+    setError(false);
     getProducts()
       .then((data) => {
-        setItems(data)
+        setItems(data);
       })
       .catch((error) => setError(error.message))
-      .finally(() => setLoading(true))
-  }, [])
+      .finally(() => setLoading(false))
+  }, []);
 
   return {
     items,
     loading,
     error,
+
+    /* Methods */
+    setItems,
   }
 }

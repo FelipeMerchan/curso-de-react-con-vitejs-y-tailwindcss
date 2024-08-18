@@ -1,13 +1,25 @@
 import { Card } from "../../Components/Card";
 import { Layout } from "../../Components/Layout";
 import { ProductDetail } from "../../Components/ProductDetail";
-import { useProducts } from "../../hooks/useProducts";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Home() {
-  const { items, loading, error } = useProducts();
+  const { items, getProductsLoading, getProductsError, search, setSearch } =  useShoppingCart();
+
+  const handleChange = (event) => {
+    const newQuery = event.target.value;
+    setSearch(newQuery);
+  }
 
   return (
     <Layout>
+      <input
+        className="rounded-lg border border-black w-80 p-4 mb-6"
+        onChange={handleChange}
+        type='text'
+        placeholder='Search a product'
+        value={search}
+      />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {
           items.map((item) => (
@@ -15,8 +27,8 @@ export function Home() {
           ))
         }
       </div>
-      {loading ? <p>Cargando...</p>: null}
-      {error ? <p>Hubo un error, intenta de nuevo</p> : null}
+      {getProductsLoading ? <p>Cargando...</p>: null}
+      {getProductsError ? <p>Hubo un error, intenta de nuevo</p> : null}
       <ProductDetail />
     </Layout>
   )
