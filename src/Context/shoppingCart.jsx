@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 import { useProducts } from '../hooks/useProducts';
 import { useSearch } from '../hooks/useSearch';
 
@@ -15,13 +15,25 @@ export const ShoppingCartProvider = ({ children }) => {
   const [order, setOrder] = useState([]);
   /* Get products */
   const { items, loading: getProductsLoading, error: getProductsError, setItems } = useProducts();
+  const [filteredItems, setFilteredItems] = useState(null);
   /* Get products by title */
   const { search, setSearch } = useSearch();
+
+  const filterItemsByTitle = useCallback((items, searchByTitle) => {
+    return items?.filter((item) => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
+  }, []);
+
+  useEffect(() => {
+    if (search) {
+      setFilteredItems(filterItemsByTitle(items, search));
+    }
+  }, [items, search, filterItemsByTitle])
 
   return (
     <ShoppingCartContext.Provider value={{
       cartProducts,
       count,
+      filteredItems,
       getProductsError,
       getProductsLoading,
       items,

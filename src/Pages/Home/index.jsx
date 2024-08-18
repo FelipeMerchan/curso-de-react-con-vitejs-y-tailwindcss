@@ -4,11 +4,33 @@ import { ProductDetail } from "../../Components/ProductDetail";
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Home() {
-  const { items, getProductsLoading, getProductsError, search, setSearch } =  useShoppingCart();
+  const { items, filteredItems, getProductsLoading, getProductsError, search, setSearch } =  useShoppingCart();
 
   const handleChange = (event) => {
     const newQuery = event.target.value;
     setSearch(newQuery);
+  }
+
+  const renderView = () => {
+    if (search?.length > 0) {
+      if (filteredItems?.length > 0) {
+        return (
+          filteredItems.map((item) => (
+            <Card key={item.id} data={item} />
+          ))
+        )
+      }
+
+      return (
+        <div>We do not have anything</div>
+      )
+    }
+
+    return (
+      items.map((item) => (
+        <Card key={item.id} data={item} />
+      ))
+    )
   }
 
   return (
@@ -21,11 +43,7 @@ export function Home() {
         value={search}
       />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {
-          items.map((item) => (
-            <Card key={item.id} data={item} />
-          ))
-        }
+        {renderView()}
       </div>
       {getProductsLoading ? <p>Cargando...</p>: null}
       {getProductsError ? <p>Hubo un error, intenta de nuevo</p> : null}
