@@ -4,7 +4,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Navbar() {
-  const { count } = useShoppingCart();
+  const { count, setSearchByCategory } = useShoppingCart();
   const activeStyle = 'underline underline-offset-4';
 
   return (
@@ -19,6 +19,7 @@ export function Navbar() {
           <NavLink
             to='/'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('')}
           >
             All
           </NavLink>
@@ -27,6 +28,7 @@ export function Navbar() {
           <NavLink
             to='/clothes'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('clothes')}
           >
             Clothes
           </NavLink>
@@ -35,6 +37,7 @@ export function Navbar() {
           <NavLink
             to='/electronics'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('electronics')}
           >
             Electronics
           </NavLink>
@@ -43,6 +46,7 @@ export function Navbar() {
           <NavLink
             to='/furnitures'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('furnitures')}
           >
             Furnitures
           </NavLink>
@@ -51,6 +55,7 @@ export function Navbar() {
           <NavLink
             to='/toys'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('toys')}
           >
             Toys
           </NavLink>
@@ -59,6 +64,7 @@ export function Navbar() {
           <NavLink
             to='/others'
             className={({ isActive }) => isActive ? activeStyle : undefined}
+            onClick={() => setSearchByCategory('others')}
           >
             Others
           </NavLink>
