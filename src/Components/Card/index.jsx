@@ -5,7 +5,7 @@ import { useUi } from '../../hooks/useUi';
 
 /* eslint-disable react/prop-types */
 export const Card = ({ data }) => {
-  const { cartProducts, count, setCartProducts, setCount, setProductToShow } = useShoppingCart();
+  const { cartProducts, setCartProducts, setProductToShow } = useShoppingCart();
   const { closeCheckoutSideMenu, closeProductDetail, openProductDetail, openCheckoutSideMenu } = useUi();
 
   const showProduct = (productDetail) => {
@@ -18,7 +18,6 @@ export const Card = ({ data }) => {
     event.stopPropagation();
     closeProductDetail();
     setCartProducts([...cartProducts, productData]);
-    setCount(count + 1);
     openCheckoutSideMenu();
   }
 

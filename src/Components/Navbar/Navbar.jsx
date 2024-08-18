@@ -4,7 +4,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Navbar() {
-  const { count, setSearchByCategory } = useShoppingCart();
+  const { cartProducts, setSearchByCategory } = useShoppingCart();
   const activeStyle = 'underline underline-offset-4';
 
   return (
@@ -44,29 +44,20 @@ export function Navbar() {
         </li>
         <li>
           <NavLink
-            to='/furnitures'
+            to='/furniture'
             className={({ isActive }) => isActive ? activeStyle : undefined}
-            onClick={() => setSearchByCategory('furnitures')}
+            onClick={() => setSearchByCategory('furniture')}
           >
-            Furnitures
+            Furniture
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/toys'
+            to='/Shoes'
             className={({ isActive }) => isActive ? activeStyle : undefined}
-            onClick={() => setSearchByCategory('toys')}
+            onClick={() => setSearchByCategory('shoes')}
           >
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/others'
-            className={({ isActive }) => isActive ? activeStyle : undefined}
-            onClick={() => setSearchByCategory('others')}
-          >
-            Others
+            Shoes
           </NavLink>
         </li>
       </ul>
@@ -99,7 +90,7 @@ export function Navbar() {
           </NavLink>
         </li>
         <li className="flex items-center gap-1">
-          <ShoppingBagIcon className='h-6 w-6 text-black' /> <span>{count}</span>
+          <ShoppingBagIcon className='h-6 w-6 text-black' /> <span>{cartProducts.length}</span>
         </li>
       </ul>
     </nav>

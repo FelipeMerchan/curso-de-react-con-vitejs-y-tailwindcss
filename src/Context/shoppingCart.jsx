@@ -7,7 +7,6 @@ import { useSearch } from '../hooks/useSearch';
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({ children }) => {
-  const [count, setCount] = useState(0);
   /* Product detail - show product */
   const [productToShow, setProductToShow] = useState({});
   /* Shopping Cart - Add products to cart */
@@ -70,7 +69,6 @@ export const ShoppingCartProvider = ({ children }) => {
   return (
     <ShoppingCartContext.Provider value={{
       cartProducts,
-      count,
       filteredItems,
       getProductsError,
       getProductsLoading,
@@ -82,7 +80,6 @@ export const ShoppingCartProvider = ({ children }) => {
 
       /* Methods */
       setCartProducts,
-      setCount,
       setItems,
       setOrder,
       setProductToShow,

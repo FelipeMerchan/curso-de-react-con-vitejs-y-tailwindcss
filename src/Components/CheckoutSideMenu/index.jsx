@@ -29,6 +29,7 @@ export const CheckoutSideMenu = () => {
 
     shoppingCartContext.setOrder([...shoppingCartContext.order, orderToAdd]);
     shoppingCartContext.setCartProducts([]);
+    shoppingCartContext.setSearch('');
   };
 
   return (

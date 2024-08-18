@@ -4,7 +4,7 @@ import { ProductDetail } from "../../Components/ProductDetail";
 import { useShoppingCart } from "../../hooks/useShoppingCart";
 
 export function Home() {
-  const { items, filteredItems, getProductsLoading, getProductsError, search, setSearch } =  useShoppingCart();
+  const { filteredItems, getProductsLoading, getProductsError, search, setSearch } =  useShoppingCart();
 
   const handleChange = (event) => {
     const newQuery = event.target.value;
@@ -12,25 +12,17 @@ export function Home() {
   }
 
   const renderView = () => {
-    if (search?.length > 0) {
-      if (filteredItems?.length > 0) {
-        return (
-          filteredItems.map((item) => (
-            <Card key={item.id} data={item} />
-          ))
-        )
-      }
-
+    if (filteredItems?.length > 0) {
+      return (
+        filteredItems.map((item) => (
+          <Card key={item.id} data={item} />
+        ))
+      )
+    } else {
       return (
         <div>We do not have anything</div>
       )
     }
-
-    return (
-      items.map((item) => (
-        <Card key={item.id} data={item} />
-      ))
-    )
   }
 
   return (
